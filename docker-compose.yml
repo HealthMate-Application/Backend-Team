@@ -15,7 +15,7 @@ services:
       context: ./crud-app
       dockerfile: Dockerfile
     ports:
-      - "3001:3000"
+      - "3001:3001"
     networks:
       - app-network
 
