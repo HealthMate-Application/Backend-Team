@@ -1,43 +1,57 @@
-# version: '3.8'
+version: '3.8'
 
 services:
-  # + SECURITY {{{
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: mydb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
   sec_app:
     build:
       context: ./crud-app
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    environment:
+      MONGODB_URI: "mongodb://root:example@mongodb:27017/mydb?authSource=admin"
+    depends_on:
+      mongodb:
+        condition: service_healthy
     networks:
       - app-network
-  # }}} 
-  # + CRUD {{{ 
+
   crud_app:
     build:
       context: ./crud-app
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
+    environment:
+      MONGODB_URI: "mongodb://root:example@mongodb:27017/mydb?authSource=admin"
+    depends_on:
+      mongodb:
+        condition: service_healthy
     networks:
       - app-network
-  # }}}
-  # + Database {{{
-  mysql_db: 
-    image: mysql:8.0
-    container_name: mysql_db 
-    environment: 
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: db 
-      MYSQL_USER: user
-      MYSQL_PASSWORD: mypassword 
-    ports: 
-      - "3306:3306" 
-    volumes:  
-      - mysql-data:/var/lib/mysql
-      - ./db.sql:/docker-enterypoint-initdb.d/db.sql
-    networks:
-        - app-nwork
-   # }}} 
+
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  mongodb_data:
