@@ -1,0 +1,33 @@
+# Node.js dependencies
+node_modules
+
+# Build directories
+dist
+build
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dockerfile and .dockerignore itself
+Dockerfile
+.dockerignore
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Package lock files if you don't want them copied (optional)
+package-lock.json
+yarn.lock
+
+# Temporary files
+*.swp
+*.swo
+
