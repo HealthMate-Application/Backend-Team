@@ -1,6 +1,7 @@
 # version: '3.8'
 
 services:
+  # + SECURITY {{{
   sec_app:
     build:
       context: ./crud-app
@@ -9,7 +10,8 @@ services:
       - "3000:3000"
     networks:
       - app-network
-
+  # }}} 
+  # + CRUD {{{ 
   crud_app:
     build:
       context: ./crud-app
@@ -18,7 +20,24 @@ services:
       - "3001:3001"
     networks:
       - app-network
-
+  # }}}
+  # + Database {{{
+  mysql_db: 
+    image: mysql:8.0
+    container_name: mysql_db 
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db 
+      MYSQL_USER: user
+      MYSQL_PASSWORD: mypassword 
+    ports: 
+      - "3306:3306" 
+    volumes:  
+      - mysql-data:/var/lib/mysql
+      - ./db.sql:/docker-enterypoint-initdb.d/db.sql
+    networks:
+        - app-nwork
+   # }}} 
 networks:
   app-network:
     driver: bridge
