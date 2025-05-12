@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   mongodb:
@@ -23,12 +23,12 @@ services:
 
   sec_app:
     build:
-      context: ./crud-app
+      context: ./security-app
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    environment:
-      MONGODB_URI: "mongodb://root:example@mongodb:27017/mydb?authSource=admin"
+    env_file:
+      - ./security-app/.env
     depends_on:
       mongodb:
         condition: service_healthy

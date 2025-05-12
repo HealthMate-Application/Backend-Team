@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
-const dbUrl = process.env.DATABASE.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD
-);
+const dbUrl = process.env.DATABASE_DOCKER;
 
 const DB = () => {
   mongoose
@@ -12,7 +9,7 @@ const DB = () => {
       console.log("DB connections successful!");
     })
     .catch((err) => {
-      console.log(`Errro ${err}`);
+      console.log(`Error ${err}`);
     });
 };
 

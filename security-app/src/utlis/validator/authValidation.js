@@ -72,7 +72,7 @@ exports.signupValidator = [
       if (age < 18) {
         throw new Error("You must be at least 18 years old.");
       }
-      req.age = age;
+      req.body.age = age;
       return true;
     }),
   check("phone")
