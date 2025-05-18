@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const dbUrl = process.env.DATABASE_DOCKER;
+const dbUrl = process.env.DATABASE_DOCKER || process.env.DATABASE;
 
 const DB = () => {
   mongoose

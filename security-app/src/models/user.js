@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema(
     },
     age: {
       type: Number,
-      min: [18, "You must be at least 18 years old."],
+  
     },
     phone: String,
     profileImage: {
@@ -67,8 +67,8 @@ const userSchema = new mongoose.Schema(
     refreshToken: String,
     role: {
       type: String,
-      enum: ["student", "admin"],
-      default: "student",
+      enum: ["doctor", "admin",'patient'],
+      default: "patient",
     },
     active: {
       type: Boolean,
@@ -116,6 +116,11 @@ const userSchema = new mongoose.Schema(
     toJSON: { virtuals: true },
   }
 );
+
+// indexes role gender age 
+userSchema.index({ role: 1, gender: 1, age: 1 });
+
+
 
 // Slug
 userSchema.pre("save", function (next) {

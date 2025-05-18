@@ -2,7 +2,6 @@ const dotenv = require("dotenv");
 
 dotenv.config({ path: `./.env` });
 const DB = require("./config/dbConfig");
-const { redisClient, redisConnect } = require("./config/redisConfig");
 const app = require("./app");
 
 process.on("uncaughtException", (err) => {

@@ -11,6 +11,7 @@ const passport = require("./config/passport");
 const ApiError = require("./utlis/ApiError");
 const userRouter = require("./routes/userRouter");
 const authRouter = require("./routes/authRouter");
+const adminRoute = require("./routes/adminRoute.js");
 const globalErrorHandler = require("./controllers/errorController");
 
 const app = express();
@@ -53,6 +54,7 @@ app.use(xss());
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/admin", adminRoute);
 
 // Unhandled Routes
 app.all("*", (req, res, next) => {
