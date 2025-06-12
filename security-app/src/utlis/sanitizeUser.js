@@ -4,5 +4,6 @@ module.exports = (user) => {
     name: user.name,
     email: user.email,
     twoFactorEnabled: user.twoFactorEnabled,
+    role: user.role,
   };
 };
