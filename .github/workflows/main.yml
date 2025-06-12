@@ -12,7 +12,7 @@ on:
 # + Steps {{{
 jobs: 
   build-and-deploy: 
-    runs-on: production
+    runs-on: self-hosted
 
     steps: 
       - name: Checkout code 
