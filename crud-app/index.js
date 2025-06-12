@@ -15,6 +15,11 @@ app.get('/health', (req, res) => {
   res.status(200).send('Ok');
 });
 
+// Root Route
+app.get('/', (req,res) => { 
+  res.status(200).send(`<h1>CRuD Contianer in HealthMate Application<h1>`);
+}); 
+
 // Setting The Server Port
 const PORT = 3001 ;
 
