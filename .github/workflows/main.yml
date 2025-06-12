@@ -1,0 +1,20 @@
+# =========================== # 
+# === Production Pipeline === # 
+# =========================== # 
+name: Production 
+
+# + Trigger {{{
+on: 
+  push: 
+    branches: 
+      - main
+# }}}
+# + Steps {{{
+jobs: 
+  build-and-deploy: 
+    runs-on: self-hosted
+
+    steps: 
+      - name: Checkout code 
+        uses: actions/checkout@v2
+# }}}
