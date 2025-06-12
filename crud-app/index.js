@@ -10,6 +10,11 @@ app.use(express.urlencoded({ extended: false })); // Middleware To Parse URL Enc
 // Routes
 app.use("/api/products", personRoute);
 
+//  Health Check Route  
+app.get('/health', (req, res) => {
+  res.status(200).send('Ok');
+});
+
 // Setting The Server Port
 const PORT = 3001 ;
 
