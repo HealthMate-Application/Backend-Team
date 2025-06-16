@@ -1,4 +1,4 @@
-# =========================== # 
+g# =========================== # 
 # === Production Pipeline === # 
 # =========================== # 
 name: Production 
@@ -17,4 +17,6 @@ jobs:
     steps: 
       - name: Checkout code 
         uses: actions/checkout@v2
+      - name: Auto Run 
+        run: docker-compose up --build -d 
 # }}}
