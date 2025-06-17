@@ -1,47 +1,43 @@
-# Dependency directories
+# === Dependency Directories ===
 node_modules/
+.pnpm-store/
 
-# Environment variables
-*.env
+# === Environment Variables ===
 .env
-.env.local
-.env.development
-.env.test
-.env.production
+.env.*
+!.env.example   # Allow committed placeholder example file
 
-# Logs
-logs
+# === Logs ===
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Runtime data
-.pnpm-store/
-.pnpm-debug.log*
-
-# Build directories
+# === Build Output ===
 dist/
 build/
 out/
 .next/
 
-# Cache directories
+# === Cache ===
 .cache/
 .turbo/
+*.tsbuildinfo
 
-# Coverage
+# === Test Coverage ===
 coverage/
 .nyc_output/
 
-# IDE/Editor
+# === Editors / IDEs ===
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
 
-# OS generated files
+# === OS Generated Files ===
 .DS_Store
 .DS_Store?
 ._*
@@ -50,18 +46,28 @@ coverage/
 ehthumbs.db
 Thumbs.db
 
-# Debug files
+# === Debug / Lock Files ===
 *.pid
-*.seed
 *.pid.lock
+*.seed
 
-# Package manager specific
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# === Lock Files (Optional: Uncomment only if using one manager) ===
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
 
-# Docker
+# === Docker Overrides ===
 docker-compose.override.yml
 
-# Optional
-*.tsbuildinfo
+# === CI/CD / Secrets (Optional) ===
+secrets.*
+.envrc
+
+# === Project Metadata ===
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# === Temporary Scripts or Files ===
+*.bak
+*.tmp
