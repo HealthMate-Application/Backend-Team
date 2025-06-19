@@ -15,8 +15,10 @@ jobs:
     runs-on: self-hosted
 
     steps: 
+      # Move The Project To VPS 
       - name: Checkout code 
         uses: actions/checkout@v2
+      # Build The Project 
       - name: Auto Run 
         run: docker-compose up --build -d 
 # }}}
