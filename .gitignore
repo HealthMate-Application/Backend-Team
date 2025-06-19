@@ -3,9 +3,15 @@ node_modules/
 .pnpm-store/
 
 # === Environment Variables ===
+# Ignore all .env files
 .env
 .env.*
-!.env.example   # Allow committed placeholder example file
+*.env
+*/.env
+
+# Allow placeholder files (for documentation or templates)
+!.env.example
+!.env.*.example
 
 # === Logs ===
 logs/
@@ -71,3 +77,4 @@ secrets.*
 # === Temporary Scripts or Files ===
 *.bak
 *.tmp
+
