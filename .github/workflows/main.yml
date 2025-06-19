@@ -21,7 +21,7 @@ jobs:
 
       # Move .env File To Dir 
       - name: Move .env File to Seucrity 
-        run: mv /home/ubuntu/env ./security-app/.env 
+        run: cp /home/ubuntu/env ./security-app/.env 
 
       # Build The Project 
       - name: Auto Run 
