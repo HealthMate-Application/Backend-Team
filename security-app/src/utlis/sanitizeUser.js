@@ -5,5 +5,6 @@ module.exports = (user) => {
     email: user.email,
     twoFactorEnabled: user.twoFactorEnabled,
     role: user.role,
+    isVerified: user.isVerified,
   };
 };
