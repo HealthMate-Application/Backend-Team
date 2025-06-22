@@ -1,14 +1,17 @@
 # === Dependency Directories ===
 node_modules/
 .pnpm-store/
-
+__*
 # === Environment Variables ===
 # Ignore all .env files
 .env
 .env.*
 *.env
 */.env
-
+.venv
+*.venv
+*/.venv
+patient-history-app
 # Allow placeholder files (for documentation or templates)
 !.env.example
 !.env.*.example
