@@ -95,9 +95,7 @@ exports.loginValidator = [
     .notEmpty()
     .withMessage("Email is required.")
     .isEmail()
-    .withMessage("Invalid email address.")
-    .normalizeEmail(),
-
+    .withMessage("Invalid email address."),
   check("password")
     .notEmpty()
     .withMessage("Password is required.")
@@ -148,8 +146,7 @@ exports.forgetPasswordValidator = [
     .notEmpty()
     .withMessage("Email is required.")
     .isEmail()
-    .withMessage("Invalid email address.")
-    .normalizeEmail(),
+    .withMessage("Invalid email address."),
   handleValidationErrors,
 ];
 exports.resetPasswordValidator = [
@@ -157,8 +154,7 @@ exports.resetPasswordValidator = [
     .notEmpty()
     .withMessage("Email is required.")
     .isEmail()
-    .withMessage("Invalid email address.")
-    .normalizeEmail(),
+    .withMessage("Invalid email address."),
 
   check("newPassword")
     .notEmpty()
@@ -193,8 +189,7 @@ exports.verifyEmailValidator = [
     .notEmpty()
     .withMessage("Email is required.")
     .isEmail()
-    .withMessage("Invalid email address.")
-    .normalizeEmail(),
+    .withMessage("Invalid email address."),
   check("otp")
     .notEmpty()
     .withMessage("OTP is required.")
