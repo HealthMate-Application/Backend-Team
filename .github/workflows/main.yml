@@ -20,8 +20,8 @@ jobs:
         uses: actions/checkout@v2
 
       # Move .env File To Dir 
-      - name: Move .env File to Seucrity 
-        run: cp /home/ubuntu/env ./security-app/.env 
+      # - name: Move .env File to Seucrity 
+      #  run: cp /home/ubuntu/env ./security-app/.env 
 
       # Build The Project 
       - name: Auto Run 
