@@ -1,10 +1,10 @@
-# ====================== # 
-# === Docker Compose === # 
-# ====================== # 
+# ====================== #
+# === Docker Compose === #
+# ====================== #
 # version: "3.8"
-# + Services {{{ 
+# + Services {{{
 services:
-  # ++ Mongo DB {{{ 
+  # ++ Mongo DB {{{
   mongodb:
     image: mongo:6.0
     container_name: mongodb
@@ -24,8 +24,8 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
-  # }}} 
-  # ++ Security App {{{ 
+  # }}}
+  # ++ Security App {{{
   sec_app:
     build:
       context: ./security-app
@@ -39,8 +39,8 @@ services:
         condition: service_healthy
     networks:
       - app-network
-  # }}} 
-  # ++ Crud App {{{ 
+  # }}}
+  # ++ Crud App {{{
   crud_app:
     build:
       context: ./crud-app
@@ -54,27 +54,27 @@ services:
         condition: service_healthy
     networks:
       - app-network
-   # }}} 
-   # ++ Medicl Records App {{{ 
-  medical_app: 
-    builld: 
-      context: ./medical-records 
-      dockerfile: Dockerfile 
-    ports: 
+    # }}}
+    # ++ Medicl Records App {{{
+  medical_app:
+    build:
+      context: ./medical-records
+      dockerfile: Dockerfile
+    ports:
       - "5678:5678"
-    depends_on: 
-      mongodb: 
+    depends_on:
+      mongodb:
         condition: service_healthy
-    networks: 
+    networks:
       - app-network
-   # }}} 
-# }}} 
-# + Networks {{{ 
+    # }}}
+# }}}
+# + Networks {{{
 networks:
   app-network:
     driver: bridge
-# }}} 
-# + Volumes {{{ 
+# }}}
+# + Volumes {{{
 volumes:
   mongodb_data:
-# }}} 
+# }}}

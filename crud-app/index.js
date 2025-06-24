@@ -1,27 +1,29 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const personRoute = require("./routes/person_route.js");
+const globalErrorHandler = require("./controllers/errorController.js");
+const ApiError = require("./utlis/ApiError.js");
+const indexRouter = require("./routes/indexRouter.js");
 
 // Middleware
 app.use(express.json()); // Middleware To Parse JSON Data
 app.use(express.urlencoded({ extended: false })); // Middleware To Parse URL Encoded Data
 
 // Routes
-app.use("/api/products", personRoute);
+indexRouter(app); // Mounting Index Router
 
-//  Health Check Route  
-app.get('/health', (req, res) => {
-  res.status(200).send('Ok');
+//  Health Check Route
+app.get("/health", (req, res) => {
+  res.status(200).send("Ok");
 });
 
-// Root Route
-app.get('/', (req,res) => { 
-  res.status(200).send(`<h1>CRuD Contianer in HealthMate Application<h1>`);
-}); 
+app.all("*", (req, res, next) => {
+  next(new ApiError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
 
 // Setting The Server Port
-const PORT = 3001 ;
+const PORT = 3001;
+app.use(globalErrorHandler);
 
 // Connect To Database And Start The Server
 mongoose
