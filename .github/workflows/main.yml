@@ -24,6 +24,6 @@ jobs:
       #  run: cp /home/ubuntu/env ./security-app/.env 
 
       # Build The Project 
-      - name: Auto Run 
-        run: docker compose up --build -d 
+      # - name: Auto Run 
+      #  run: docker compose up --build -d 
 # }}}
