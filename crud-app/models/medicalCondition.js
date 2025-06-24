@@ -61,4 +61,4 @@ const MedicalCondition = mongoose.model(
   "MedicalCondition",
   medicalConditionSchema
 );
-export default MedicalCondition;
+module.exports = MedicalCondition;
