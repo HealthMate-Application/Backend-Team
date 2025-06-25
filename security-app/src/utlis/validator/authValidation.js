@@ -35,18 +35,7 @@ exports.signupValidator = [
     .notEmpty()
     .withMessage("Password is required.")
     .isLength({ min: 8 })
-    .withMessage("Password must be at least 8 characters long.")
-    .matches(/[a-z]/)
-    .withMessage("Password must contain at least one lowercase letter.")
-    .matches(/[A-Z]/)
-    .withMessage("Password must contain at least one uppercase letter.")
-    .matches(/\d/)
-    .withMessage("Password must contain at least one digit.")
-    .matches(/[@$!%*?&]/)
-    .withMessage(
-      "Password must contain at least one special character (@$!%*?&)."
-    ),
-
+    .withMessage("Password must be at least 8 characters long."),
   check("passwordConfirm")
     .notEmpty()
     .withMessage("Password confirmation is required.")
@@ -160,17 +149,7 @@ exports.resetPasswordValidator = [
     .notEmpty()
     .withMessage("New password is required.")
     .isLength({ min: 8 })
-    .withMessage("Password must be at least 8 characters long.")
-    .matches(/[a-z]/)
-    .withMessage("Password must contain at least one lowercase letter.")
-    .matches(/[A-Z]/)
-    .withMessage("Password must contain at least one uppercase letter.")
-    .matches(/\d/)
-    .withMessage("Password must contain at least one digit.")
-    .matches(/[@$!%*?&]/)
-    .withMessage(
-      "Password must contain at least one special character (@$!%*?&)."
-    ),
+    .withMessage("New password must be at least 8 characters long."),
   check("confirmNewPassword")
     .notEmpty()
     .withMessage("New password confirmation is required.")
